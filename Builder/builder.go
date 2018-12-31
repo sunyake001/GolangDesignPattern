@@ -1,4 +1,4 @@
-package Builder
+package builder
 
 type BuildProcess interface {
 	SetWheels() BuildProcess
@@ -30,17 +30,17 @@ type CarBuilder struct {
 }
 
 func (c *CarBuilder) SetWheels() BuildProcess {
-	c.v.Wheels = 0
+	c.v.Wheels = 4
 	return c
 }
 
 func (c *CarBuilder) SetSeats() BuildProcess {
-	c.v.Seats = 0
+	c.v.Seats = 5
 	return c
 }
 
 func (c *CarBuilder) SetStructure() BuildProcess {
-	c.v.Structure = ""
+	c.v.Structure = "Car"
 	return c
 }
 
@@ -58,15 +58,38 @@ func (c *BikeBuilder) SetWheels() BuildProcess {
 }
 
 func (c *BikeBuilder) SetSeats() BuildProcess {
-	c.v.Seats = 0
+	c.v.Seats = 2
 	return c
 }
 
 func (c *BikeBuilder) SetStructure() BuildProcess {
-	c.v.Structure = ""
+	c.v.Structure = "Bike"
 	return c
 }
 
 func (c *BikeBuilder) GetVehicle() VehicleProduct {
+	return c.v
+}
+
+type BusBuilder struct {
+	v VehicleProduct
+}
+
+func (c *BusBuilder) SetWheels() BuildProcess {
+	c.v.Wheels = 8
+	return c
+}
+
+func (c *BusBuilder) SetSeats() BuildProcess {
+	c.v.Seats = 42
+	return c
+}
+
+func (c *BusBuilder) SetStructure() BuildProcess {
+	c.v.Structure = "Bus"
+	return c
+}
+
+func (c *BusBuilder) GetVehicle() VehicleProduct {
 	return c.v
 }
